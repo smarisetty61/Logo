@@ -1,0 +1,171 @@
+<!--
+  VerityForgeAI — Custom Cloudflare Access Login Page
+  ====================================================
+  WHERE TO PASTE THIS:
+    Zero Trust dashboard → Reusable components → Custom pages
+    → Access custom pages card → Manage → Create custom page
+    → Login type → paste this into the HTML editor → Publish
+    → then: Access controls → Applications → (your www.verityforgeai.com app)
+      → Additional settings → Login page → select this custom page → Save
+
+  Logo and contact details below are already filled in:
+    - Logo: https://raw.githubusercontent.com/smarisetty61/logo/main/logo.png
+    - Contact: contact@verityforgeai.com
+
+  <cf-access-authbox></cf-access-authbox> below is REQUIRED — Cloudflare
+  injects the real OTP/email sign-in control into it. Do not remove or
+  replace it. No custom JavaScript is allowed (it will be stripped/rejected).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VerityForgeAI — Authorized Access</title>
+<style>
+  :root {
+    --navy: #0b1538;
+    --navy2: #111d45;
+    --panel: #151f47;
+    --border: #2a3566;
+    --text: #e8ecf8;
+    --text2: #93a0c4;
+    --accent: #3dd6c8;
+    --accent-dim: rgba(61, 214, 200, 0.12);
+    --mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+    --sans: 'Epilogue', 'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% -10%, var(--navy2), var(--navy) 60%);
+    font-family: var(--sans);
+    color: var(--text);
+    padding: 24px;
+  }
+  .wrap { width: 100%; max-width: 440px; }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .brand img { height: 42px; width: auto; }
+  .brand-name {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+  .stealth-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(61, 214, 200, 0.3);
+    border-radius: 100px;
+    padding: 5px 13px;
+  }
+  .stealth-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 30px 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+  .card h1 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .card p.sub {
+    margin: 0 0 24px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text2);
+  }
+  cf-access-authbox {
+    display: block;
+    --cf-colour-primary: #3dd6c8;
+    --cf-colour-background: #151f47;
+    --cf-colour-text: #e8ecf8;
+  }
+  .divider {
+    margin: 26px 0 20px;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+  .access-note {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text2);
+  }
+  .access-note strong { color: var(--text); }
+  .access-note a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .access-note a:hover { text-decoration: underline; }
+  .foot {
+    margin-top: 22px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--text2);
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/smarisetty61/logo/main/logo.png" alt="VerityForgeAI" />
+      <div class="brand-name">VERITYFORGEAI&trade;</div>
+      <span class="stealth-badge"><span class="dot"></span>Stealth Mode &middot; Restricted Access</span>
+    </div>
+
+    <div class="card">
+      <h1>Authorized Access Only</h1>
+      <p class="sub">
+        The website is a private environment, currently in stealth mode and
+        limited to authorized partners, customers, and team members.
+      </p>
+
+      <cf-access-authbox></cf-access-authbox>
+
+      <hr class="divider" />
+
+      <p class="access-note">
+        <strong>Don't have access yet?</strong> If you were expecting to
+        review this site &mdash; as a prospective partner, customer, or
+        collaborator &mdash; reach out to request authorization:
+        <br /><br />
+        <a href="mailto:contact@verityforgeai.com">contact@verityforgeai.com</a>
+      </p>
+    </div>
+
+    <div class="foot">VERITYFORGEAI &mdash; BAREMETAL TRUST. ROOTED IN AI.</div>
+  </div>
+</body>
+</html>
